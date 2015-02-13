@@ -1,3 +1,4 @@
+puts "%TEST_HELPER-I-DEBUG, running test/test_helper.rb"
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
