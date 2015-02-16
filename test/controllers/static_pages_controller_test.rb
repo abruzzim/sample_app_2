@@ -4,7 +4,7 @@ class StaticPagesControllerTest < ActionController::TestCase
 
   def setup
   	puts "%STATIC_PAGES_CONTROLLER_TEST-I-SETUP, running setup method..."
-	@base_title = "Ruby on Rails 4.2.0 Tutorial Sample App"
+	  @base_title = "Ruby on Rails 4.2.0 Tutorial Sample App"
   end
 
   def teardown
