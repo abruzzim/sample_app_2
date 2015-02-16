@@ -12,25 +12,25 @@ class StaticPagesControllerTest < ActionController::TestCase
   	@base_title = nil
   end
 
-  test "should get Home" do
+  test "%STATIC_PAGES_CONTROLLER_TEST-I-HOME, should render Home Page" do
     get :home
     assert_response :success
     assert_select "title", "#{@base_title}"
   end
 
-  test "should get Help" do
+  test "%STATIC_PAGES_CONTROLLER_TEST-I-HELP, should render Help Page" do
     get :help
     assert_response :success
     assert_select "title", "Help | #{@base_title}"
   end
 
-  test "should get About" do
+  test "%STATIC_PAGES_CONTROLLER_TEST-I-ABOUT, should render About Page" do
     get :about
     assert_response :success
     assert_select "title", "About | #{@base_title}"
   end
 
-  test "should get Contact" do
+  test "%STATIC_PAGES_CONTROLLER_TEST-I-CONTACT, should render Contact Page" do
     get :contact
     assert_response :success
     assert_select "title", "Contact | #{@base_title}"
