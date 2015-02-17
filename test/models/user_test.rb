@@ -6,7 +6,12 @@ class UserTest < ActiveSupport::TestCase
 
 	def setup
 		puts "%USER_TEST-I-SETUP, running setup method..."
-		@test_user = User.new(name: "Charlie Brown", email: "cbrown@example.com")
+		@test_user = User.new(
+								name: "Charlie Brown", 
+			                 	email: "cbrown@example.com",
+			                 	password: "foobar",
+			                 	password_confirmation: "foobar"
+			                 )
 	end
 
 	def teardown
@@ -75,6 +80,12 @@ class UserTest < ActiveSupport::TestCase
 		dup_test_user.email = @test_user.email.upcase
 		@test_user.save
 		assert( !dup_test_user.valid?, "%USER_TEST-F-EMAIL, duplicate email should be invalid." )
+	end
+
+	test "password length should be greater than 5 characters" do
+		puts "%USER_TEST-I-PWD, Validating password min length..."
+		@test_user.password = @test_user.password_confirmation = "x" * 5
+		assert( !@test_user.valid? )
 	end
 
 end

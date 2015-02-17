@@ -36,4 +36,11 @@ class User < ActiveRecord::Base
 	validates(:email, length: { maximum: 254, too_long: "Maximum email address size is %{count} characters." })
 	validates(:email, format: { with: VALID_EMAIL_REGEX })
 	validates(:email, uniqueness: { case_sensitive: false })
+
+	# Secure Password
+	#
+	# has_secure_password(options = {}) ⇒ Object
+	# Ref: http://www.rubydoc.info/gems/has_secure_password/0.1.0/ActiveRecord/SecurePassword/ClassMethods#has_secure_password-instance_method
+	has_secure_password
+	validates(:password, length: { minimum: 6 })
 end
