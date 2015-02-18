@@ -57,6 +57,7 @@ class UserTest < ActiveSupport::TestCase
 		invalid_emails << 'just"not"right@example.com'
 		invalid_emails << 'this is"not\allowed@example.com'
 		invalid_emails << 'this\ still\"not\\allowed@example.com'
+		invalid_emails << 'foo@bar..com'
 		invalid_emails.each do |invalid_email|
 			@test_user.email = invalid_email
 			assert( !@test_user.valid?, "%USER_TEST-F-EMAIL, #{invalid_email.inspect} should be invalid." )
@@ -80,6 +81,14 @@ class UserTest < ActiveSupport::TestCase
 		dup_test_user.email = @test_user.email.upcase
 		@test_user.save
 		assert( !dup_test_user.valid?, "%USER_TEST-F-EMAIL, duplicate email should be invalid." )
+	end
+
+	test "email address should be saved in lowercase" do
+		puts "%USER_TEST-I-EMAIL, Validating email case..."
+		mixed_case_email = "Foo@ExamPle.CoM"
+		@test_user.email = mixed_case_email
+		@test_user.save
+		assert_equal( mixed_case_email.downcase, @test_user.reload.email )
 	end
 
 	test "password length should be greater than 5 characters" do

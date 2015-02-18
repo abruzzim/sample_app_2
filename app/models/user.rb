@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
 	#
 	before_save do
 		puts "%USER-I-BEFORE_SAVE, running callback."
-		self.email = email.downcase
+		# self.email = email.downcase
+		email.downcase!
+
 	end
 
 	# Validations
@@ -29,7 +31,7 @@ class User < ActiveRecord::Base
 	# validates :username, presence: true
 	# validates :username, uniqueness: true
 	#
-	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates(:name, presence: true)
 	validates(:name, length: { maximum: 50, too_long: "Maximum user name size is %{count} characters." })
 	validates(:email, presence: true)
