@@ -14,6 +14,16 @@ $gray:              #555;
 $light_gray:        #777;
 $medium-light-gray: #eaeaea;
 
+// Allows a group of CSS rules to be packaged 
+// up and used for multiple elements.
+@mixin box_sizing {
+	// The width and height properties include 
+	// the padding and border, but not the margin.
+	-moz-box-sizing:    border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing:         border-box;
+}
+
 /*
   Universal Styling
 */
@@ -115,4 +125,39 @@ footer {
 			margin-left: 15px;
 		}
 	}
+}
+
+/*
+  Debugging
+*/
+
+.debug_dump {
+	// The clear CSS property specifies whether 
+	// an element can be next to floating elements 
+	// that precede it or must be moved down 
+	// (cleared) below them.
+	clear: both;
+	// The float CSS property specifies that an 
+	// element should be taken from the normal flow 
+	// and placed along the left or right side of 
+	// its container, where text and inline elements 
+	// will wrap around it. A floating element is one 
+	// where the computed value of float is not none.
+	float: left;
+	// The width CSS property specifies the width of 
+	// the content area of an element. The content 
+	// area is inside the padding, border, and margin 
+	// of the element.
+	width: 100%;
+	// The margin-top CSS property of an element sets 
+	// the margin space required on the top of an 
+	// element. A negative value is also allowed.
+	margin-top: 45px;
+	// The box-sizing CSS property is used to alter 
+	// the default CSS box model used to calculate 
+	// widths and heights of elements. It is possible 
+	// to use this property to emulate the behavior 
+	// of browsers that do not correctly support the 
+	// CSS box model specification.
+	@include box_sizing;
 }
