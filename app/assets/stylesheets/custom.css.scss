@@ -200,3 +200,26 @@ aside {
 .gravatar_edit {
 	margin-top: 15px;
 }
+
+/*
+  Forms
+*/
+
+input, textarea, select, .uneditable-input {
+	border: 1px solid #bbb;
+	width: 100%;
+	margin-bottom: 15px;
+	// The box-sizing CSS property is used to alter 
+	// the default CSS box model used to calculate 
+	// widths and heights of elements. It is possible 
+	// to use this property to emulate the behavior 
+	// of browsers that do not correctly support the 
+	// CSS box model specification.
+	@include box_sizing;
+}
+
+input {
+	// The !important qualifier overrides a more 
+	// specific element style.
+	height: auto !important;
+}
