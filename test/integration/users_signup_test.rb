@@ -22,6 +22,11 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 		end
 		# Check route, action and view.
 		assert_template 'users/new'
+		# Check error messages from shared/_error_messages.html.erb
+		assert_select 'div#error_explanation'
+		assert_select 'div.alert.alert-danger'
+		# Check CSS class from assets/stylesheets/custom.css.scss
+		assert_select 'div.field_with_errors'
 	end
 
 	test "valid signup information" do
@@ -36,6 +41,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 		end
 		# Check route, action and view.
 		assert_template 'users/show'
+		# Check flash message from views/layouts/application.html.erb
+		assert_select 'div.alert.alert-success'
+		assert_not flash.empty?
 	end
 
 end
