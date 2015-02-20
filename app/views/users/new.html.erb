@@ -8,20 +8,34 @@
 		-->
 		<%= form_for(@user) do |f| %>
 			<!--
+			Display validation error messages for invalid input.
+			-->
+			<%= render 'shared/error_messages' %>
+			<!--
 			Creates the HTML needed to make a labeled text field element
 			appropriate for setting the :name attribute of the User model.
+			Prototype: label(object_name, method, content_or_options = nil, options = nil, &block)
 			-->
 			<%= f.label :name %>
-			<%= f.text_field :name %>
+			<!--
+			Prototype: text_field(object_name, method, options = {})
+			-->
+			<%= f.text_field :name, class: 'form-control' %>
 
 			<%= f.label :email %>
-			<%= f.email_field :email %>
+			<!--
+			Prototype: email_field(object_name, method, options = {})
+			-->
+			<%= f.email_field :email, class: 'form-control' %>
 
 			<%= f.label :password %>
-			<%= f.password_field :password %>
+			<!--
+			Prototype: password_field(object_name, method, options = {})
+			-->
+			<%= f.password_field :password, class: 'form-control' %>
 
 			<%= f.label :password_confirmation, "Confirmation" %>
-			<%= f.password_field :password_confirmation %>
+			<%= f.password_field :password_confirmation, class: 'form-control' %>
 
 			<%= f.submit "Create Account", class: "btn btn-primary" %>
 		<% end %>
